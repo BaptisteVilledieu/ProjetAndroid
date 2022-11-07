@@ -16,7 +16,7 @@ class MainViewModel:ViewModel() {
 
     val service = retrofit.create(TmdbAPI::class.java)
 
-    val movies = MutableStateFlow<TmdbMovieResult>(value= TmdbMovieResult())
+    val movies = MutableStateFlow(TmdbMovieResult())
 
     fun getFilmsInitiaux(){
             viewModelScope.launch {

@@ -22,6 +22,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import fr.baptistevilledieu.monprofil.ui.theme.MonProfilTheme
 import kotlin.math.log
+import androidx.lifecycle.viewmodel.compose.viewModel as viewModel
 
 class MainActivity : ComponentActivity() {
     @SuppressLint("SuspiciousIndentation")
@@ -30,6 +31,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val navController = rememberNavController()
+            val model:MainViewModel = viewModel()
             val windowSizeClass = calculateWindowSizeClass(this)
             NavHost(
                 navController = navController,
@@ -38,7 +40,7 @@ class MainActivity : ComponentActivity() {
                     Profil(windowSizeClass,navController)
                 }
                 composable("films") {
-                    Films()
+                    Films(model)
                 }
             }
         }

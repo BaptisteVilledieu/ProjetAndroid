@@ -5,6 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 
 @Composable
-fun Films(navController: NavController){
+fun Films(){
         Text("text")
 }

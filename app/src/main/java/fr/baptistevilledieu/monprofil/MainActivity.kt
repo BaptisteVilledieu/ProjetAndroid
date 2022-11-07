@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
                     Profil(windowSizeClass,navController)
                 }
                 composable("films") {
-                    Films(navController)
+                    Films()
                 }
             }
         }

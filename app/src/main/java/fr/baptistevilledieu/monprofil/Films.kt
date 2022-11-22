@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -30,7 +31,9 @@ fun Films(viewModel: MainViewModel) {
                 columns = GridCells.Fixed(count=2)
         ) {
                 items(movies.results) { movie ->
-                        Card(modifier = Modifier.padding(12.dp).fillMaxSize(), elevation = 8.dp, shape = RoundedCornerShape(20.dp)) {
+                        Card(modifier = Modifier
+                                .padding(12.dp)
+                                .fillMaxSize(), elevation = 8.dp, shape = RoundedCornerShape(20.dp)) {
                                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                                         val url = "https://image.tmdb.org/t/p/w780/"
                                         AsyncImage(
@@ -50,5 +53,9 @@ fun Films(viewModel: MainViewModel) {
                                 }
                         }
                 }
+        }
+        
+        Scaffold() {
+                
         }
 }

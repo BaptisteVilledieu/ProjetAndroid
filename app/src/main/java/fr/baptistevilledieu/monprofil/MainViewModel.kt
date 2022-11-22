@@ -20,7 +20,13 @@ class MainViewModel:ViewModel() {
 
     fun getFilmsInitiaux(){
             viewModelScope.launch {
-                movies.value = service.lastmovies("a70fdcaf6041b798cfa437ee72337ed1")
+                movies.value = service.lastMovies("a70fdcaf6041b798cfa437ee72337ed1")
+        }
+    }
+
+    fun rechercheFilms(search : String){
+        viewModelScope.launch {
+            movies.value = service.searchMovies(search,"a70fdcaf6041b798cfa437ee72337ed1")
         }
     }
 

@@ -17,6 +17,8 @@ class MainViewModel:ViewModel() {
     val service = retrofit.create(TmdbAPI::class.java)
 
     val movies = MutableStateFlow(TmdbMovieResult())
+    val series = MutableStateFlow(TmdbSerieResult())
+    val actors = MutableStateFlow(TmdbActorResult())
 
     fun getFilmsInitiaux(){
             viewModelScope.launch {
@@ -30,7 +32,33 @@ class MainViewModel:ViewModel() {
         }
     }
 
+    fun getSeriesInitiales(){
+        viewModelScope.launch {
+            series.value = service.lastSeries("a70fdcaf6041b798cfa437ee72337ed1")
+        }
+    }
+
+    fun rechercheSeries(search : String){
+        viewModelScope.launch {
+            series.value = service.searchSeries(search,"a70fdcaf6041b798cfa437ee72337ed1")
+        }
+    }
+
+    fun getActeursInitiaux(){
+        viewModelScope.launch {
+            actors.value = service.lastActors("a70fdcaf6041b798cfa437ee72337ed1")
+        }
+    }
+
+    fun rechercheActeurs(search : String){
+        viewModelScope.launch {
+            actors.value = service.searchActors(search,"a70fdcaf6041b798cfa437ee72337ed1")
+        }
+    }
+
     init {
         getFilmsInitiaux()
+        getSeriesInitiales()
+        getActeursInitiaux()
     }
 }

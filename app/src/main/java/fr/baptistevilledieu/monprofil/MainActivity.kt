@@ -75,6 +75,12 @@ class MainActivity : ComponentActivity() {
                             composable("films") {
                                 Films(model)
                             }
+                            composable("series") {
+                                Series(model)
+                            }
+                            composable("acteurs") {
+                                Acteurs(model)
+                            }
                         }
                     }
                 }

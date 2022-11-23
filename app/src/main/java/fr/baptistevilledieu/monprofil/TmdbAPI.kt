@@ -9,5 +9,17 @@ interface TmdbAPI {
 
     @GET("search/movie")
     suspend fun searchMovies(@Query("query") search: String, @Query("api_key") api_key: String): TmdbMovieResult
+
+    @GET("trending/tv/week")
+    suspend fun lastSeries(@Query("api_key") api_key: String): TmdbSerieResult
+
+    @GET("search/tv")
+    suspend fun searchSeries(@Query("query") search: String, @Query("api_key") api_key: String): TmdbSerieResult
+
+    @GET("trending/person/week")
+    suspend fun lastActors(@Query("api_key") api_key: String): TmdbActorResult
+
+    @GET("search/person")
+    suspend fun searchActors(@Query("query") search: String, @Query("api_key") api_key: String): TmdbActorResult
 }
 

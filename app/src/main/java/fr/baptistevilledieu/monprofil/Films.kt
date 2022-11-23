@@ -11,6 +11,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
@@ -27,12 +28,19 @@ fun Films(viewModel: MainViewModel) {
         Scaffold(topBar = {
                 TopAppBar(backgroundColor = Color.Blue, contentColor = Color.White ) {
                         Row(){
-
+                                TextField(value = text, onValueChange = {text = it})
                         }
-                        Button(onClick = { /*TODO*/ }) {
-
+                        IconButton(onClick = { if (text.text == ""){
+                                viewModel.getFilmsInitiaux()
+                        }else{
+                                viewModel.rechercheFilms(text.text)
                         }
-
+                        }) {
+                                Icon(painter = painterResource(id = R.drawable.iconrecherche), contentDescription ="icon de recherche", modifier = Modifier.size(30.dp) )
+                        }
+                        IconButton(onClick = { viewModel.getFilmsInitiaux() }) {
+                                Icon(painter = painterResource(id = R.drawable.iconrevenirenarriere), contentDescription ="icon pour revenir en arrière", modifier = Modifier.size(30.dp) )
+                        }
                 }
         }) {
 
@@ -69,3 +77,4 @@ fun Films(viewModel: MainViewModel) {
                 }
         }
 }
+

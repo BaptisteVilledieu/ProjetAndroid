@@ -6,6 +6,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material3.windowsizeclass.WindowHeightSizeClass
@@ -82,8 +83,9 @@ fun mesContacts(){
 
 @Composable
 fun Bouton(navController: NavController){
-    Button(onClick = { navController.navigate("films") }) {
-        Text(text = "Démarrer")
+    Button(onClick = { navController.navigate("films") }, colors = ButtonDefaults.buttonColors(backgroundColor = Color.Blue
+    )) {
+        Text(text = "Démarrer", color = Color.White)
     }
 }
 

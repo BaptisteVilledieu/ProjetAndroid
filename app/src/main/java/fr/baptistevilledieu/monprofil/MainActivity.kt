@@ -73,13 +73,19 @@ class MainActivity : ComponentActivity() {
                                 Profil(windowSizeClass, navController)
                             }
                             composable("films") {
-                                Films(model)
+                                Films(model, navController)
                             }
                             composable("series") {
-                                Series(model)
+                                Series(model, navController)
                             }
                             composable("acteurs") {
                                 Acteurs(model)
+                            }
+                            composable("detailsFilms/{id}"){
+                                DetailsFilms(model)
+                            }
+                            composable("detailsSeries"){
+                                DetailsSeries()
                             }
                         }
                     }

@@ -1,6 +1,7 @@
 package fr.baptistevilledieu.monprofil
 
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -17,10 +18,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 
 @Composable
-fun Films(viewModel: MainViewModel) {
+fun Films(viewModel: MainViewModel, navController: NavController) {
         val movies by viewModel.movies.collectAsState()
 
         var text by remember { mutableStateOf(TextFieldValue("")) }
@@ -51,7 +53,7 @@ fun Films(viewModel: MainViewModel) {
                                 Card(
                                         modifier = Modifier
                                                 .padding(12.dp)
-                                                .fillMaxSize(),
+                                                .fillMaxSize().clickable { navController.navigate("detailsFilms/"+movie.id) },
                                         elevation = 8.dp,
                                         shape = RoundedCornerShape(20.dp)
                                 ) {
